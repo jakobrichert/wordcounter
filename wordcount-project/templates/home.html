@@ -1,14 +1,37 @@
-<h1>Word Counter</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Word Counter - Analyze Your Text</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Word Counter</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Analyze your text with detailed statistics and word frequency analysis
+        </p>
 
-<form action="{%url 'count'%}">  
-    <textarea cols="40" rows = "6" name = "fulltext"></textarea>
-    <br>
-    
-    <input type= "submit" value="Count!" />
-</form>
-    <br>
+        <form action="{% url 'count' %}">
+            <textarea cols="40" rows="10" name="fulltext" placeholder="Paste or type your text here to analyze..."></textarea>
+            <br>
+            <input type="submit" value="Analyze Text" />
+            <a href="{% url 'about' %}" class="btn">About This Tool</a>
+        </form>
 
-
-<form action = "{%url 'about' %}">
-    <input type = "submit" value = "About" />
-    </form>
+        <div class="feature-list">
+            <h2>Features</h2>
+            <ul>
+                <li>Total word count and unique word count</li>
+                <li>Character count (with and without spaces)</li>
+                <li>Sentence count and average word length</li>
+                <li>Reading time estimation</li>
+                <li>Detailed word frequency analysis</li>
+                <li>Top words highlighting</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
