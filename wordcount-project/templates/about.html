@@ -1,2 +1,59 @@
-<h1> This is a simple word counter </h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Advanced Word Counter</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>About Advanced Word Counter</h1>
 
+        <div class="about-content">
+            <p>
+                <strong>Advanced Word Counter</strong> is a powerful text analysis tool built with Django
+                that provides comprehensive statistics about your text content.
+            </p>
+
+            <h2>Features</h2>
+            <div class="feature-list">
+                <ul>
+                    <li><strong>Word Count:</strong> Get both total and unique word counts</li>
+                    <li><strong>Character Analysis:</strong> See character counts with and without spaces</li>
+                    <li><strong>Sentence Detection:</strong> Automatic sentence counting</li>
+                    <li><strong>Average Word Length:</strong> Understand the complexity of your text</li>
+                    <li><strong>Reading Time:</strong> Estimate how long it takes to read your text</li>
+                    <li><strong>Frequency Analysis:</strong> See which words appear most often</li>
+                    <li><strong>Smart Word Processing:</strong> Handles punctuation and capitalization intelligently</li>
+                </ul>
+            </div>
+
+            <h2>Use Cases</h2>
+            <ul>
+                <li>Writers checking article or essay length</li>
+                <li>Students meeting assignment word requirements</li>
+                <li>Content creators analyzing readability</li>
+                <li>SEO professionals optimizing content</li>
+                <li>Researchers analyzing text patterns</li>
+            </ul>
+
+            <h2>Technology Stack</h2>
+            <ul>
+                <li>Backend: Django (Python web framework)</li>
+                <li>Frontend: HTML5, CSS3</li>
+                <li>Text Processing: Python regular expressions</li>
+            </ul>
+
+            <h2>Privacy</h2>
+            <p>
+                Your text is processed locally and is not stored or transmitted anywhere.
+                All analysis happens in real-time on the server and results are displayed immediately.
+            </p>
+        </div>
+
+        <a href="{% url 'home' %}" class="btn">Try It Now</a>
+    </div>
+</body>
+</html>

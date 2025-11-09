@@ -1,18 +1,63 @@
-<h1>There are {{count}} words in your text</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analysis Results - Word Counter</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Text Analysis Results</h1>
 
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">{{ count }}</span>
+                <span class="stat-label">Total Words</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">{{ unique_words }}</span>
+                <span class="stat-label">Unique Words</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">{{ char_with_spaces }}</span>
+                <span class="stat-label">Characters (with spaces)</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">{{ char_no_spaces }}</span>
+                <span class="stat-label">Characters (no spaces)</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">{{ sentence_count }}</span>
+                <span class="stat-label">Sentences</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">{{ avg_word_length }}</span>
+                <span class="stat-label">Avg Word Length</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">{{ reading_time }}</span>
+                <span class="stat-label">Reading Time (min)</span>
+            </div>
+        </div>
 
-<h1> Your text: </h1>
-{{fulltext}}
+        <h2>Your Text</h2>
+        <div class="text-preview">{{ fulltext }}</div>
 
-<h1> word count </h1>
+        <h2>Word Frequency Analysis</h2>
+        <p style="color: #666; margin-bottom: 15px;">Words sorted by frequency (most common first)</p>
+        <div class="word-frequency">
+            {% for word, counttotal in sortedwords %}
+            <div class="word-item">
+                <span class="word">{{ word }}</span>
+                <span class="count">{{ counttotal }}</span>
+            </div>
+            {% endfor %}
+        </div>
 
-{% for word, counttotal in sortedwords %}
-
-{{word}} - {{ counttotal}}
-
-<br />
-
-
-<br />
-
-{% endfor %}
+        <a href="{% url 'home' %}" class="btn">Analyze Another Text</a>
+        <a href="{% url 'about' %}" class="btn">About</a>
+    </div>
+</body>
+</html>
